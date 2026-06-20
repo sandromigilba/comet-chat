@@ -85,31 +85,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
     activePeerRef.current = activePeer
   }, [activePeer])
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  useEffect(() => {
-    const saved = localStorage.getItem('comet-theme') as 'light' | 'dark' | null
-    if (saved) {
-      setTheme(saved)
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setTheme(prefersDark ? 'dark' : 'light')
-    }
-  }, [])
+  const theme = 'light'
 
   useEffect(() => {
     const root = window.document.documentElement
-    if (theme === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-    localStorage.setItem('comet-theme', theme)
-  }, [theme])
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+    root.classList.remove('dark')
+    localStorage.setItem('comet-theme', 'light')
   }, [])
+
+  const toggleTheme = useCallback(() => {}, [])
 
   const [socketConnected, setSocketConnected] = useState(false)
 

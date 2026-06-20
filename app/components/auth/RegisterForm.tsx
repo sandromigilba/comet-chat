@@ -8,7 +8,7 @@ import { Button } from '../ui/Button'
 import { PasswordHint } from './PasswordHint'
 
 const inputClass =
-  'w-full rounded-[30px] border border-sky-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-sky-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-sky-100/40 transition-all duration-200 shadow-inner dark:border-[#30363d] dark:bg-[#0d1117] dark:text-[#c9d1d9] dark:placeholder:text-[#8b949e] dark:focus:border-[#58a6ff] dark:focus:bg-[#161b22] dark:focus:ring-[#58a6ff]/20'
+  'w-full rounded-[30px] border border-brand-light/40 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-brand-medium focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-light/20 transition-all duration-200 shadow-inner'
 
 export function RegisterForm() {
   const { register } = useApp()
@@ -41,7 +41,7 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#8b949e]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
           Username
         </label>
         <input
@@ -56,7 +56,7 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#8b949e]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
           Password
         </label>
         <input
@@ -78,7 +78,7 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#8b949e]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
           Confirm password
         </label>
         <input
@@ -92,7 +92,7 @@ export function RegisterForm() {
         />
       </div>
 
-      {error && <p className="ml-3 text-xs font-medium text-rose-500 dark:text-rose-400">{error}</p>}
+      {error && <p className="ml-3 text-xs font-medium text-rose-500">{error}</p>}
 
       <Button
         type="submit"
