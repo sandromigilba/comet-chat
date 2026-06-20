@@ -16,11 +16,11 @@ export function Button({
     'inline-flex items-center justify-center gap-2 rounded-[30px] px-6 py-3 text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm'
   const variants = {
     primary:
-      'bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.98]',
+      'bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 shadow-blue-500/10 hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] dark:from-[#bd93f9] dark:to-[#ff79c6] dark:text-[#282a36] dark:hover:from-[#c5a3fa] dark:hover:to-[#ff8dae] dark:shadow-[#bd93f9]/10 dark:hover:shadow-[#bd93f9]/20',
     secondary:
-      'bg-blue-50 text-blue-600 border border-blue-100/50 hover:bg-blue-100/60 hover:text-blue-700 active:scale-[0.98]',
+      'bg-blue-50 text-blue-600 border border-blue-100/50 hover:bg-blue-100/60 hover:text-blue-700 active:scale-[0.98] dark:bg-[#44475a] dark:text-[#f8f8f2] dark:border-[#6272a4]/30 dark:hover:bg-[#4f526b] dark:hover:text-white',
     ghost:
-      'bg-transparent text-slate-500 hover:text-slate-800 hover:bg-blue-50/50',
+      'bg-transparent text-slate-500 hover:text-slate-800 hover:bg-blue-50/50 dark:text-[#6272a4] dark:hover:text-[#f8f8f2] dark:hover:bg-[#44475a]/50',
   }
 
   return (

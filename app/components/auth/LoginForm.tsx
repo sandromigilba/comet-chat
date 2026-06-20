@@ -6,7 +6,7 @@ import { useApp } from '../../hooks/useApp'
 import { Button } from '../ui/Button'
 
 const inputClass =
-  'w-full rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner'
+  'w-full rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner dark:border-[#6272a4]/40 dark:bg-[#44475a]/70 dark:text-[#f8f8f2] dark:placeholder:text-[#6272a4] dark:focus:border-[#bd93f9] dark:focus:bg-[#282a36] dark:focus:ring-[#bd93f9]/20'
 
 export function LoginForm() {
   const { login } = useApp()
@@ -27,7 +27,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#6272a4]">
           Username
         </label>
         <input
@@ -42,7 +42,7 @@ export function LoginForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#6272a4]">
           Password
         </label>
         <input
@@ -56,7 +56,7 @@ export function LoginForm() {
         />
       </div>
 
-      {error && <p className="ml-3 text-xs font-medium text-rose-500">{error}</p>}
+      {error && <p className="ml-3 text-xs font-medium text-rose-500 dark:text-rose-400">{error}</p>}
 
       <Button type="submit" disabled={loading} className="mt-2 w-full">
         <LogIn className="h-4 w-4" />

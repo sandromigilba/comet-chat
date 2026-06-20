@@ -41,6 +41,8 @@ export interface AppContextValue {
   logout: () => void
   openChat: (peerUsername: string) => void
   sendMessage: (content: string) => Promise<void>
+  theme: 'light' | 'dark'
+  toggleTheme: () => void
 }
 
 export const AppContext = createContext<AppContextValue | null>(null)
@@ -82,6 +84,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     activePeerRef.current = activePeer
   }, [activePeer])
+
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const saved = localStorage.getItem('comet-theme') as 'light' | 'dark' | null
+    if (saved) {
+      setTheme(saved)
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      setTheme(prefersDark ? 'dark' : 'light')
+    }
+  }, [])
+
+  useEffect(() => {
+    const root = window.document.documentElement
+    if (theme === 'dark') {
+      root.classList.add('dark')
+    } else {
+      root.classList.remove('dark')
+    }
+    localStorage.setItem('comet-theme', theme)
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }, [])
 
   const [socketConnected, setSocketConnected] = useState(false)
 
@@ -304,6 +332,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       logout,
       openChat,
       sendMessage,
+      theme,
+      toggleTheme,
     }),
     [
       dbReady,
@@ -321,6 +351,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       logout,
       openChat,
       sendMessage,
+      theme,
+      toggleTheme,
     ],
   )
 
