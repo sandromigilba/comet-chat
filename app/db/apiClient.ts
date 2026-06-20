@@ -1,9 +1,10 @@
 import type { Message, Session, User } from '../types'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:4000'
+const API_BASE = typeof window === 'undefined' ? (process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:4000') : ''
 
 async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const url = typeof window === 'undefined' ? `${API_BASE}${path}` : path
+  const res = await fetch(url, {
     ...options,
     headers: {
       'Content-Type': 'application/json',

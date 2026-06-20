@@ -83,6 +83,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     activePeerRef.current = activePeer
   }, [activePeer])
 
+  const [socketConnected, setSocketConnected] = useState(false)
+
   useEffect(() => {
     if (!session) return
 
@@ -90,9 +92,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const socket = io(socketUrl, {
       withCredentials: true,
       transports: ['websocket', 'polling'],
+      timeout: 5000,
     })
 
     socket.emit('join', session.user.username)
+
+    socket.on('connect', () => {
+      setSocketConnected(true)
+    })
+
+    socket.on('connect_error', () => {
+      setSocketConnected(false)
+    })
+
+    socket.on('disconnect', () => {
+      setSocketConnected(false)
+    })
 
     socket.on('message', (msg: Message) => {
       setMessages((prev) => {
@@ -116,6 +131,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
       socket.disconnect()
     }
   }, [session])
+
+  // Polling Fallback Effect: Active when WebSockets are disconnected
+  useEffect(() => {
+    if (!session || !activePeer || socketConnected) return
+
+    const interval = setInterval(async () => {
+      try {
+        const msgs = await getMessages(session.user.username, activePeer)
+        setMessages((prev) => {
+          // Avoid unnecessary rerenders if message logs match
+          if (
+            prev.length === msgs.length &&
+            prev[prev.length - 1]?.id === msgs[msgs.length - 1]?.id
+          ) {
+            return prev
+          }
+          return msgs
+        })
+      } catch (err) {
+        console.error('Polling messages error:', err)
+      }
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [session, activePeer, socketConnected])
 
   useEffect(() => {
     initDatabase()
