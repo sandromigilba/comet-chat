@@ -21,23 +21,23 @@
 }
 
 .dark {
-  --background: #282a36;
-  --foreground: #f8f8f2;
+  --background: #09090b;
+  --foreground: #f4f4f5;
   
-  --bg-gradient-start: #1e1f29;
-  --bg-gradient-middle: #282a36;
-  --bg-gradient-end: #343746;
+  --bg-gradient-start: #09090b;
+  --bg-gradient-middle: #18181b;
+  --bg-gradient-end: #27272a;
   
-  --glass-bg: rgba(40, 42, 54, 0.8);
-  --glass-border: rgba(98, 114, 164, 0.35);
-  --glass-shadow: rgba(0, 0, 0, 0.2);
+  --glass-bg: rgba(24, 24, 27, 0.75);
+  --glass-border: rgba(63, 63, 70, 0.35);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
   
-  --glass-strong-bg: rgba(30, 31, 41, 0.94);
-  --glass-strong-border: rgba(189, 147, 249, 0.35);
-  --glass-strong-shadow: rgba(0, 0, 0, 0.35);
+  --glass-strong-bg: rgba(9, 9, 11, 0.94);
+  --glass-strong-border: rgba(82, 82, 91, 0.35);
+  --glass-strong-shadow: rgba(0, 0, 0, 0.55);
 
-  --scrollbar-thumb: rgba(189, 147, 249, 0.3);
-  --scrollbar-thumb-hover: rgba(255, 121, 198, 0.5);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
 }
 
 @theme inline {

@@ -23,14 +23,14 @@ export function MessageInput() {
   }
 
   return (
-    <div className="flex shrink-0 items-center gap-2 border-t border-blue-100/50 p-4 bg-white/40 backdrop-blur-md dark:border-t-[#6272a4]/20 dark:bg-[#282a36]/40">
+    <div className="flex shrink-0 items-center gap-2 border-t border-blue-100/50 p-4 bg-white/40 backdrop-blur-md dark:border-t-zinc-700/30 dark:bg-[#09090b]/40">
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Type a message…"
-        className="min-w-0 flex-1 rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner dark:border-[#6272a4]/40 dark:bg-[#44475a]/70 dark:text-[#f8f8f2] dark:placeholder:text-[#6272a4] dark:focus:border-[#bd93f9] dark:focus:bg-[#282a36] dark:focus:ring-[#bd93f9]/20"
+        className="min-w-0 flex-1 rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner dark:border-zinc-700/50 dark:bg-zinc-800/70 dark:text-[#f4f4f5] dark:placeholder:text-zinc-500 dark:focus:border-zinc-500 dark:focus:bg-[#09090b] dark:focus:ring-zinc-500/20"
       />
       <Button
         type="button"

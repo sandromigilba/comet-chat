@@ -8,7 +8,7 @@ import { Button } from '../ui/Button'
 import { PasswordHint } from './PasswordHint'
 
 const inputClass =
-  'w-full rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner dark:border-[#6272a4]/40 dark:bg-[#44475a]/70 dark:text-[#f8f8f2] dark:placeholder:text-[#6272a4] dark:focus:border-[#bd93f9] dark:focus:bg-[#282a36] dark:focus:ring-[#bd93f9]/20'
+  'w-full rounded-[30px] border border-blue-100/80 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-100/40 transition-all duration-200 shadow-inner dark:border-zinc-700/50 dark:bg-zinc-800/70 dark:text-[#f4f4f5] dark:placeholder:text-zinc-500 dark:focus:border-zinc-500 dark:focus:bg-[#09090b] dark:focus:ring-zinc-500/20'
 
 export function RegisterForm() {
   const { register } = useApp()
@@ -41,7 +41,7 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#6272a4]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-zinc-500">
           Username
         </label>
         <input
@@ -56,7 +56,7 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#6272a4]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-zinc-500">
           Password
         </label>
         <input
@@ -78,7 +78,7 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-[#6272a4]">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-zinc-500">
           Confirm password
         </label>
         <input
