@@ -20,13 +20,13 @@ export function MessageBubble({ content, isOwn, time }: MessageBubbleProps) {
         className={`max-w-[70%] px-5 py-3 shadow-sm ${
           isOwn
             ? 'bg-gradient-to-br from-brand-light to-brand-dark text-white rounded-[30px] rounded-br-[8px] shadow-brand-medium/5'
-            : 'bg-slate-50 text-slate-800 border border-slate-100 rounded-[30px] rounded-bl-[8px]'
+            : 'bg-slate-50 text-slate-800 border border-slate-100 rounded-[30px] rounded-bl-[8px] dark:bg-brand-dark/40 dark:text-slate-100 dark:border-brand-light/15'
         }`}
       >
         <p className="text-sm leading-relaxed font-medium">{content}</p>
         <p
           className={`mt-1 text-right text-[9px] font-semibold ${
-            isOwn ? 'text-white/80' : 'text-slate-400'
+            isOwn ? 'text-white/80' : 'text-slate-400 dark:text-slate-500'
           }`}
         >
           {time}

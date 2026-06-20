@@ -18,15 +18,45 @@
 
   --scrollbar-thumb: rgba(67, 165, 164, 0.2);
   --scrollbar-thumb-hover: rgba(67, 165, 164, 0.4);
+
+  --brand-light: #5de5e3;
+  --brand-medium: #43a5a4;
+  --brand-dark: #296665;
+  --brand-deep: #0f2626;
+}
+
+.dark {
+  --background: #140b33;
+  --foreground: #f1f0f7;
+  
+  --bg-gradient-start: #140b33;
+  --bg-gradient-middle: #1a0f44;
+  --bg-gradient-end: #281767;
+  
+  --glass-bg: rgba(40, 23, 103, 0.7);
+  --glass-border: rgba(80, 45, 205, 0.25);
+  --glass-shadow: rgba(0, 0, 0, 0.35);
+  
+  --glass-strong-bg: rgba(20, 11, 51, 0.92);
+  --glass-strong-border: rgba(80, 45, 205, 0.35);
+  --glass-strong-shadow: rgba(0, 0, 0, 0.45);
+
+  --scrollbar-thumb: rgba(80, 45, 205, 0.3);
+  --scrollbar-thumb-hover: rgba(80, 45, 205, 0.55);
+
+  --brand-light: #502dcd;
+  --brand-medium: #3c229a;
+  --brand-dark: #281767;
+  --brand-deep: #140b33;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-light: #5de5e3;
-  --color-brand-medium: #43a5a4;
-  --color-brand-dark: #296665;
-  --color-brand-deep: #0f2626;
+  --color-brand-light: var(--brand-light);
+  --color-brand-medium: var(--brand-medium);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-deep: var(--brand-deep);
   --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

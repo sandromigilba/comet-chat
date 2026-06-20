@@ -19,27 +19,27 @@ export function Auth() {
       <GlassPanel strong className="w-full max-w-md p-8 shadow-xl">
         <div className="mb-8 flex flex-col items-center text-center">
           <motion.div
-            className="mb-4 flex h-14 w-14 items-center justify-center rounded-[30px] bg-gradient-to-br from-brand-light to-brand-dark text-white shadow-md shadow-brand-medium/20"
+            className="mb-4 flex h-14 w-14 items-center justify-center rounded-[30px] bg-gradient-to-br from-brand-light to-brand-dark text-white shadow-md shadow-brand-medium/20 dark:shadow-brand-deep/35"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle className="h-6 w-6" />
           </motion.div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-800">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
             Comet
           </h1>
-          <p className="mt-1 text-sm font-medium text-slate-400">
+          <p className="mt-1 text-sm font-medium text-slate-400 dark:text-slate-500">
             Connect and chat with friends
           </p>
         </div>
 
-        <div className="mb-6 flex rounded-[30px] border border-brand-light/35 bg-brand-light/10 p-1">
+        <div className="mb-6 flex rounded-[30px] border border-brand-light/35 bg-brand-light/10 p-1 dark:border-brand-light/20 dark:bg-brand-deep/50">
           <button
             type="button"
             onClick={() => setAuthMode('login')}
             className={`flex-1 rounded-[30px] py-2.5 text-sm font-semibold transition-all duration-300 ${
               isLogin
-                ? 'bg-white text-brand-dark shadow-sm border border-brand-light/20'
-                : 'text-slate-500 hover:text-brand-deep'
+                ? 'bg-white text-brand-dark shadow-sm border border-brand-light/20 dark:bg-brand-medium dark:text-slate-100 dark:border-brand-light/30'
+                : 'text-slate-500 hover:text-brand-deep dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
             Login
@@ -49,8 +49,8 @@ export function Auth() {
             onClick={() => setAuthMode('register')}
             className={`flex-1 rounded-[30px] py-2.5 text-sm font-semibold transition-all duration-300 ${
               !isLogin
-                ? 'bg-white text-brand-dark shadow-sm border border-brand-light/20'
-                : 'text-slate-500 hover:text-brand-deep'
+                ? 'bg-white text-brand-dark shadow-sm border border-brand-light/20 dark:bg-brand-medium dark:text-slate-100 dark:border-brand-light/30'
+                : 'text-slate-500 hover:text-brand-deep dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
             Create Account
@@ -69,14 +69,14 @@ export function Auth() {
           </motion.div>
         </AnimatePresence>
 
-        <p className="mt-6 text-center text-xs font-semibold text-slate-400">
+        <p className="mt-6 text-center text-xs font-semibold text-slate-400 dark:text-slate-500">
           {isLogin ? (
             <>
               Don&apos;t have an account?{' '}
               <button
                 type="button"
                 onClick={() => setAuthMode('register')}
-                className="text-brand-medium underline-offset-2 hover:text-brand-dark hover:underline"
+                className="text-brand-medium underline-offset-2 hover:text-brand-dark hover:underline dark:text-brand-light dark:hover:text-brand-light/85"
               >
                 Create one
               </button>
@@ -87,7 +87,7 @@ export function Auth() {
               <button
                 type="button"
                 onClick={() => setAuthMode('login')}
-                className="text-brand-medium underline-offset-2 hover:text-brand-dark hover:underline"
+                className="text-brand-medium underline-offset-2 hover:text-brand-dark hover:underline dark:text-brand-light dark:hover:text-brand-light/85"
               >
                 Sign in
               </button>
