@@ -19,7 +19,7 @@ export function Auth() {
       <GlassPanel strong className="w-full max-w-md p-8 shadow-xl">
         <div className="mb-8 flex flex-col items-center text-center">
           <motion.div
-            className="mb-4 flex h-14 w-14 items-center justify-center rounded-[30px] bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-md shadow-cyan-500/20 dark:from-[#21262d] dark:to-[#30363d] dark:text-[#58a6ff] dark:shadow-black/35"
+            className="mb-4 flex h-14 w-14 items-center justify-center rounded-[30px] bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/20 dark:from-[#21262d] dark:to-[#30363d] dark:text-[#58a6ff] dark:shadow-black/35"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle className="h-6 w-6" />
@@ -32,14 +32,14 @@ export function Auth() {
           </p>
         </div>
 
-        <div className="mb-6 flex rounded-[30px] border border-cyan-100/50 bg-cyan-50/40 p-1 dark:border-[#30363d] dark:bg-[#161b22]">
+        <div className="mb-6 flex rounded-[30px] border border-sky-100/50 bg-sky-50/40 p-1 dark:border-[#30363d] dark:bg-[#161b22]">
           <button
             type="button"
             onClick={() => setAuthMode('login')}
             className={`flex-1 rounded-[30px] py-2.5 text-sm font-semibold transition-all duration-300 ${
               isLogin
-                ? 'bg-white text-cyan-600 shadow-sm border border-cyan-100/20 dark:bg-[#21262d] dark:text-[#58a6ff] dark:border-[#30363d]/50'
-                : 'text-slate-500 hover:text-cyan-800 dark:text-[#8b949e] dark:hover:text-[#c9d1d9]'
+                ? 'bg-white text-sky-600 shadow-sm border border-sky-100/20 dark:bg-[#21262d] dark:text-[#58a6ff] dark:border-[#30363d]/50'
+                : 'text-slate-500 hover:text-sky-800 dark:text-[#8b949e] dark:hover:text-[#c9d1d9]'
             }`}
           >
             Login
@@ -49,8 +49,8 @@ export function Auth() {
             onClick={() => setAuthMode('register')}
             className={`flex-1 rounded-[30px] py-2.5 text-sm font-semibold transition-all duration-300 ${
               !isLogin
-                ? 'bg-white text-cyan-600 shadow-sm border border-cyan-100/20 dark:bg-[#21262d] dark:text-[#58a6ff] dark:border-[#30363d]/50'
-                : 'text-slate-500 hover:text-cyan-800 dark:text-[#8b949e] dark:hover:text-[#c9d1d9]'
+                ? 'bg-white text-sky-600 shadow-sm border border-sky-100/20 dark:bg-[#21262d] dark:text-[#58a6ff] dark:border-[#30363d]/50'
+                : 'text-slate-500 hover:text-sky-800 dark:text-[#8b949e] dark:hover:text-[#c9d1d9]'
             }`}
           >
             Create Account
@@ -76,7 +76,7 @@ export function Auth() {
               <button
                 type="button"
                 onClick={() => setAuthMode('register')}
-                className="text-cyan-500 underline-offset-2 hover:text-cyan-700 hover:underline dark:text-[#58a6ff] dark:hover:text-[#58a6ff]/80"
+                className="text-sky-500 underline-offset-2 hover:text-sky-700 hover:underline dark:text-[#58a6ff] dark:hover:text-[#58a6ff]/80"
               >
                 Create one
               </button>
@@ -87,7 +87,7 @@ export function Auth() {
               <button
                 type="button"
                 onClick={() => setAuthMode('login')}
-                className="text-cyan-500 underline-offset-2 hover:text-cyan-700 hover:underline dark:text-[#58a6ff] dark:hover:text-[#58a6ff]/80"
+                className="text-sky-500 underline-offset-2 hover:text-sky-700 hover:underline dark:text-[#58a6ff] dark:hover:text-[#58a6ff]/80"
               >
                 Sign in
               </button>

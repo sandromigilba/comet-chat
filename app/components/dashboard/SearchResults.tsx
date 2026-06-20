@@ -25,9 +25,9 @@ export function SearchResults() {
           <button
             type="button"
             onClick={() => openChat(username)}
-            className="flex w-full items-center gap-3 rounded-[30px] px-3.5 py-2.5 text-left transition-all duration-300 hover:bg-cyan-50/40 text-slate-600 hover:text-slate-800 dark:text-[#c9d1d9] dark:hover:bg-[#21262d]/50 dark:hover:text-[#f0f6fc]"
+            className="flex w-full items-center gap-3 rounded-[30px] px-3.5 py-2.5 text-left transition-all duration-300 hover:bg-sky-50/40 text-slate-600 hover:text-slate-800 dark:text-[#c9d1d9] dark:hover:bg-[#21262d]/50 dark:hover:text-[#f0f6fc]"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[30px] bg-gradient-to-br from-cyan-400 to-teal-500 text-sm font-semibold uppercase text-white shadow-sm dark:from-[#21262d] dark:to-[#30363d] dark:text-[#58a6ff]">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[30px] bg-gradient-to-br from-sky-400 to-blue-500 text-sm font-semibold uppercase text-white shadow-sm dark:from-[#21262d] dark:to-[#30363d] dark:text-[#58a6ff]">
               {username[0]}
             </div>
             <span className="text-sm font-semibold">

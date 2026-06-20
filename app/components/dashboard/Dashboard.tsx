@@ -14,7 +14,7 @@ export function Dashboard() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="flex h-dvh overflow-hidden bg-gradient-to-tr from-blue-50/50 via-white/50 to-indigo-50/50 p-0"
+      className="flex h-dvh overflow-hidden bg-gradient-to-tr from-sky-50/50 via-white/50 to-blue-50/50 p-0"
     >
       <Toast />
       <Sidebar
