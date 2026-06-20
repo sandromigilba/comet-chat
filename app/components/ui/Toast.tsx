@@ -21,8 +21,8 @@ export function Toast() {
           <div
             className={`flex items-center gap-3 rounded-[30px] border px-6 py-3.5 text-sm font-medium shadow-lg backdrop-blur-xl transition-all duration-300 ${
               toast.type === 'success'
-                ? 'bg-emerald-50/95 border-emerald-100/80 text-emerald-800 shadow-emerald-500/5 dark:bg-[#09090b]/95 dark:border-emerald-500/30 dark:text-[#f4f4f5] dark:shadow-black/25'
-                : 'bg-rose-50/95 border-rose-100/80 text-rose-800 shadow-rose-500/5 dark:bg-[#09090b]/95 dark:border-rose-500/30 dark:text-[#f4f4f5] dark:shadow-black/25'
+                ? 'bg-emerald-50/95 border-emerald-100/80 text-emerald-800 shadow-emerald-500/5 dark:bg-[#161b22]/95 dark:border-[#30363d] dark:text-[#c9d1d9] dark:shadow-black/35'
+                : 'bg-rose-50/95 border-rose-100/80 text-rose-800 shadow-rose-500/5 dark:bg-[#161b22]/95 dark:border-[#30363d] dark:text-[#c9d1d9] dark:shadow-black/35'
             }`}
           >
             {toast.type === 'success' ? (
