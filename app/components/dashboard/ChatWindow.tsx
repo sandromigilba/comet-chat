@@ -13,18 +13,18 @@ export function ChatWindow() {
 
   if (!activePeer) {
     return (
-      <main className="flex min-h-0 flex-1 flex-col glass">
+      <main className="flex min-h-0 flex-1 flex-col glass rounded-[30px] shadow-sm">
         <EmptyChat />
       </main>
     )
   }
 
   return (
-    <main className="flex min-h-0 flex-1 flex-col glass border-l border-brand-light/30 overflow-hidden shadow-sm dark:border-l-brand-light/15">
+    <main className="flex min-h-0 flex-1 flex-col gap-4 lg:gap-6">
       <motion.header
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex shrink-0 items-center gap-3 border-b border-brand-light/30 bg-white/50 backdrop-blur-md px-5 py-4 lg:px-6 shadow-sm dark:border-b-brand-light/15 dark:bg-brand-deep/50"
+        className="flex shrink-0 items-center gap-3 glass rounded-[30px] px-5 py-4 lg:px-6 shadow-sm"
       >
         <div className="flex h-10 w-10 items-center justify-center rounded-[30px] bg-gradient-to-br from-brand-light to-brand-medium text-sm font-bold uppercase text-white shadow-sm">
           {activePeer[0]}
@@ -35,12 +35,13 @@ export function ChatWindow() {
         </div>
       </motion.header>
 
-      <MessageList
-        messages={messages}
-        currentUsername={session.user.username}
-      />
-
-      <MessageInput />
+      <div className="flex min-h-0 flex-1 flex-col glass rounded-[30px] overflow-hidden shadow-sm">
+        <MessageList
+          messages={messages}
+          currentUsername={session.user.username}
+        />
+        <MessageInput />
+      </div>
     </main>
   )
 }

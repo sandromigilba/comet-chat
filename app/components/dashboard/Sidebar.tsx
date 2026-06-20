@@ -48,7 +48,7 @@ export function Sidebar({ open, onClose, onOpen }: SidebarProps) {
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-[min(100%,320px)] flex-col border-r border-brand-light/25 glass transition-transform duration-300 lg:static lg:z-0 lg:translate-x-0 dark:border-r-brand-light/15 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-[calc(100%-2rem)] max-w-[320px] my-4 ml-4 flex-col glass rounded-[30px] transition-transform duration-300 lg:static lg:z-0 lg:translate-x-0 lg:w-[min(100%,320px)] lg:h-full lg:m-0 ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
