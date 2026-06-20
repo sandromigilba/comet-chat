@@ -6,7 +6,7 @@ import { useApp } from '../../hooks/useApp'
 import { Button } from '../ui/Button'
 
 const inputClass =
-  'w-full rounded-[30px] border border-brand-light/40 bg-slate-50/80 px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-brand-medium focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-light/20 transition-all duration-200 shadow-inner dark:border-brand-light/30 dark:bg-brand-deep dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-brand-light dark:focus:bg-brand-deep/80 dark:focus:ring-brand-light/15'
+  'w-full rounded-[30px] border border-brand-light/35 bg-white px-5 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-brand-dark focus:outline-none focus:ring-4 focus:ring-brand-light/20 transition-all duration-200 shadow-sm'
 
 export function LoginForm() {
   const { login } = useApp()
@@ -27,7 +27,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-slate-400">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
           Username
         </label>
         <input
@@ -42,7 +42,7 @@ export function LoginForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500 dark:text-slate-400">
+        <label className="mb-1.5 ml-3 block text-xs font-semibold text-slate-500">
           Password
         </label>
         <input
@@ -56,7 +56,7 @@ export function LoginForm() {
         />
       </div>
 
-      {error && <p className="ml-3 text-xs font-medium text-rose-500 dark:text-rose-400">{error}</p>}
+      {error && <p className="ml-3 text-xs font-medium text-rose-500">{error}</p>}
 
       <Button type="submit" disabled={loading} className="mt-2 w-full">
         <LogIn className="h-4 w-4" />

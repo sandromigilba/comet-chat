@@ -18,9 +18,9 @@ export function Button({
     primary:
       'bg-gradient-to-r from-brand-light to-brand-dark text-white hover:from-brand-medium hover:to-brand-deep shadow-brand-medium/10 hover:shadow-lg hover:shadow-brand-medium/20 active:scale-[0.98]',
     secondary:
-      'bg-brand-light/10 text-brand-dark border border-brand-light/30 hover:bg-brand-light/20 hover:text-brand-deep active:scale-[0.98] dark:text-slate-200 dark:border-brand-light/50 dark:hover:text-white dark:hover:bg-brand-light/20',
+      'bg-brand-light/10 text-brand-dark border border-brand-light/30 hover:bg-brand-light/20 hover:text-brand-deep active:scale-[0.98]',
     ghost:
-      'bg-transparent text-slate-500 hover:text-slate-800 hover:bg-brand-light/15 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-brand-light/10',
+      'bg-transparent text-slate-500 hover:text-slate-800 hover:bg-brand-light/15',
   }
 
   return (

@@ -8,6 +8,7 @@ import {
   apiRegister,
   apiSendMessage,
   fetchSession,
+  apiDeleteAccount,
 } from './apiClient'
 
 export async function initDatabase(): Promise<void> {
@@ -52,4 +53,8 @@ export async function sendMessage(
   content: string,
 ): Promise<Message> {
   return apiSendMessage(senderUsername, recipientUsername, content)
+}
+
+export async function deleteUserAccount(): Promise<void> {
+  await apiDeleteAccount()
 }

@@ -21,14 +21,14 @@ export function Toast() {
           <div
             className={`flex items-center gap-3 rounded-[30px] border px-6 py-3.5 text-sm font-medium shadow-lg backdrop-blur-xl transition-all duration-300 ${
               toast.type === 'success'
-                ? 'bg-emerald-50/95 border-emerald-100/80 text-emerald-800 shadow-emerald-500/5 dark:bg-[#161b22]/95 dark:border-[#30363d] dark:text-[#c9d1d9] dark:shadow-black/35'
-                : 'bg-rose-50/95 border-rose-100/80 text-rose-800 shadow-rose-500/5 dark:bg-[#161b22]/95 dark:border-[#30363d] dark:text-[#c9d1d9] dark:shadow-black/35'
+                ? 'bg-emerald-50/95 border-emerald-100/80 text-emerald-800 shadow-emerald-500/5'
+                : 'bg-rose-50/95 border-rose-100/80 text-rose-800 shadow-rose-500/5'
             }`}
           >
             {toast.type === 'success' ? (
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
             ) : (
-              <XCircle className="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" />
+              <XCircle className="h-4 w-4 shrink-0 text-rose-600" />
             )}
             <span>{toast.message}</span>
           </div>

@@ -17,6 +17,7 @@ import {
   loginUser,
   registerUser,
   sendMessage as dbSendMessage,
+  deleteUserAccount,
 } from '../db/database'
 import { apiSearchUsers } from '../db/apiClient'
 
@@ -33,6 +34,7 @@ export interface AppContextValue {
   searchResults: string[]
   recentPeers: string[]
   activePeer: string | null
+  activePeerExists: boolean
   messages: Message[]
   toast: ToastState | null
   showToast: (message: string, type: ToastState['type']) => void
@@ -43,6 +45,11 @@ export interface AppContextValue {
   sendMessage: (content: string) => Promise<void>
   theme: 'light' | 'dark'
   toggleTheme: () => void
+  font: string
+  setFont: (font: string) => void
+  deleteAccount: () => Promise<void>
+  activeView: 'chat' | 'settings'
+  setActiveView: (view: 'chat' | 'settings') => void
 }
 
 export const AppContext = createContext<AppContextValue | null>(null)
@@ -75,9 +82,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [authMode, setAuthMode] = useState<AuthMode>('login')
   const [searchQuery, setSearchQuery] = useState('')
   const [activePeer, setActivePeer] = useState<string | null>(null)
+  const [activePeerExists, setActivePeerExists] = useState<boolean>(true)
   const [messages, setMessages] = useState<Message[]>([])
   const [toast, setToast] = useState<ToastState | null>(null)
   const [chatRevision, setChatRevision] = useState(0)
+  const [font, setFont] = useState<string>(() => {
+    if (typeof window === 'undefined') return 'monospace'
+    return localStorage.getItem('comet-font') || 'monospace'
+  })
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const root = window.document.documentElement
+    // Remove previous dynamic font classes
+    Array.from(root.classList).forEach((cls) => {
+      if (cls.startsWith('font-') && cls.endsWith('-custom')) {
+        root.classList.remove(cls)
+      }
+    })
+    root.classList.add(`font-${font}-custom`)
+    localStorage.setItem('comet-font', font)
+  }, [font])
 
   const activePeerRef = useRef<string | null>(null)
 
@@ -85,26 +110,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
     activePeerRef.current = activePeer
   }, [activePeer])
 
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') return 'light'
-    const saved = localStorage.getItem('comet-theme') as 'light' | 'dark' | null
-    if (saved) return saved
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    return prefersDark ? 'dark' : 'light'
-  })
+  const theme = 'light'
+  const toggleTheme = useCallback(() => {}, [])
+  const [activeView, setActiveView] = useState<'chat' | 'settings'>('chat')
 
   useEffect(() => {
-    const root = window.document.documentElement
-    if (theme === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-    localStorage.setItem('comet-theme', theme)
-  }, [theme])
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+    if (typeof window === 'undefined') return
+    window.document.documentElement.classList.remove('dark')
   }, [])
 
   const [socketConnected, setSocketConnected] = useState(false)
@@ -276,10 +288,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setSearchQuery('')
   }, [])
 
+  const deleteAccount = useCallback(async () => {
+    try {
+      await deleteUserAccount()
+      logout()
+    } catch (e: any) {
+      showToast(e?.message || 'Failed to delete account', 'error')
+    }
+  }, [logout, showToast])
+
   const openChat = useCallback(
     (peerUsername: string) => {
       if (!session) return
       setActivePeer(peerUsername)
+      setActiveView('chat')
+      
+      // Check if peer exists
+      void (async () => {
+        try {
+          const res = await fetch(`/api/users/exists?username=${encodeURIComponent(peerUsername)}`)
+          const data = await res.json()
+          setActivePeerExists(data.exists)
+        } catch {
+          setActivePeerExists(true)
+        }
+      })()
+
       void (async () => {
         const msgs = await getMessages(session.user.username, peerUsername)
         setMessages(msgs)
@@ -293,20 +327,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const sendMessage = useCallback(
     async (content: string) => {
       if (!session || !activePeer || !content.trim()) return
-      const msg = await dbSendMessage(
-        session.user.username,
-        activePeer,
-        content,
-      )
-      setMessages((prev) => {
-        if (prev.some((m) => m.id === msg.id)) {
-          return prev
-        }
-        return [...prev, msg]
-      })
-      setChatRevision((n) => n + 1)
+      try {
+        const msg = await dbSendMessage(
+          session.user.username,
+          activePeer,
+          content,
+        )
+        setMessages((prev) => {
+          if (prev.some((m) => m.id === msg.id)) {
+            return prev
+          }
+          return [...prev, msg]
+        })
+        setChatRevision((n) => n + 1)
+      } catch (err: any) {
+        showToast(err?.message || 'Failed to send message', 'error')
+      }
     },
-    [session, activePeer],
+    [session, activePeer, showToast],
   )
 
   const value = useMemo<AppContextValue>(
@@ -320,6 +358,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       searchResults,
       recentPeers,
       activePeer,
+      activePeerExists,
       messages,
       toast,
       showToast,
@@ -328,8 +367,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
       logout,
       openChat,
       sendMessage,
-      theme,
+      theme: 'light',
       toggleTheme,
+      font,
+      setFont,
+      deleteAccount,
+      activeView,
+      setActiveView,
     }),
     [
       dbReady,
@@ -339,6 +383,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       searchResults,
       recentPeers,
       activePeer,
+      activePeerExists,
       messages,
       toast,
       showToast,
@@ -347,8 +392,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       logout,
       openChat,
       sendMessage,
-      theme,
       toggleTheme,
+      font,
+      deleteAccount,
+      activeView,
+      setActiveView,
     ],
   )
 

@@ -68,6 +68,19 @@ export async function POST(request: Request) {
       )
     }
 
+    // Verify recipient exists
+    const [recipientRows] = await pool.query(
+      'SELECT id FROM users WHERE username = ?',
+      [recipientUsername]
+    ) as any[]
+
+    if (recipientRows.length === 0) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      )
+    }
+
     const threadId = [senderUsername, recipientUsername].sort().join(':')
     const createdAt = Date.now()
 

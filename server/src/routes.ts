@@ -144,6 +144,27 @@ router.get('/api/users/search', authenticateToken, async (req: Request, res: Res
   }
 })
 
+// 5.5. Check User Existence
+router.get('/api/users/exists', async (req: Request, res: Response) => {
+  const username = req.query.username as string
+
+  if (!username) {
+    return res.json({ exists: false })
+  }
+
+  try {
+    const [rows] = await pool.query(
+      'SELECT id FROM users WHERE username = ?',
+      [username.trim().toLowerCase()]
+    ) as any[]
+
+    return res.json({ exists: rows.length > 0 })
+  } catch (error) {
+    console.error('Check user existence error:', error)
+    return res.json({ exists: false })
+  }
+})
+
 // 6. Get Recent Chat Peers
 router.get('/api/threads/recent', authenticateToken, async (req: Request, res: Response) => {
   const username = req.query.username as string
@@ -203,6 +224,15 @@ router.post('/api/messages', authenticateToken, async (req: Request, res: Respon
   }
 
   try {
+    // Verify recipient exists
+    const [recipientRows] = await pool.query(
+      'SELECT id FROM users WHERE username = ?',
+      [recipientUsername]
+    ) as any[]
+
+    if (recipientRows.length === 0) {
+      return res.status(404).json({ error: 'User not found' })
+    }
     const threadId = [senderUsername, recipientUsername].sort().join(':')
     const createdAt = Date.now()
 

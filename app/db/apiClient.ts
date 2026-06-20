@@ -100,3 +100,7 @@ export async function apiSendMessage(senderUsername: string, recipientUsername: 
   })
   return data.message
 }
+
+export async function apiDeleteAccount(): Promise<void> {
+  await api('/api/users/delete', { method: 'POST' })
+}

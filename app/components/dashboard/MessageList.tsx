@@ -19,7 +19,7 @@ export function MessageList({ messages, currentUsername }: MessageListProps) {
   }, [messages])
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 py-5 bg-brand-light/5 dark:bg-brand-deep/40">
+    <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 py-5 bg-brand-light/5">
       <AnimatePresence initial={false}>
         {messages.map((msg) => (
           <MessageBubble
